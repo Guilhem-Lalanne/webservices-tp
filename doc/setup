@@ -1,0 +1,54 @@
+/* 
+ * Project setup
+ *
+ * @author : Guilhem Lalanne
+ *
+ */
+
+CONFIGURATION OF VIRTUALHOST
+
+Modification of apache conf file to add a virtualhost :
+sudo vim /etc/apache2/apache2.conf
+TODO : add details
+
+Creation of a conf file for our new website :
+sudo vim /etc/apache2/sites-available/webservices-tp.conf
+TODO : add details
+
+Add new name in known local hosts :
+sudo vim /etc/hosts
+TODO : add details
+
+Activating new website :
+sudo a2ensite webservices-tp
+
+Reload Apache2 :
+systemctl reload apache2.service
+
+
+INSTALLATION OF SYMFONY
+
+Symfony installation in the work directory :
+cd EPSI/webservices/TP/
+sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+sudo chmod a+x /usr/local/bin/symfony
+
+Project name and Symfony version are chosen :
+symfony new backup 3.3
+
+At this point, no working symfony website ... problem with authorisations on var !
+
+So, rm var content :
+rm -rf var/*
+
+Then set of correct rights on var :
+HTTPDUSER=www-data
+sudo setfacl -R -m u:www-data:rwX -m u:guilhem:rwX var
+sudo setfacl -dR -m u:www-data:rwX -m u:guilhem:rwX var
+
+We can now verify that our website is running, using symfony, on
+webservices-tp.localhost/web/app-dev.php
+
+TODO : insert screenshot here
+
+
