@@ -19,6 +19,7 @@ The title could be misleading, it regroups :
 - Symfony Bundle creation
 - Database creation
 - Entity (database object) creation
+- Fixtures (data for test purposes)
 
 ## 3. Operation
 
