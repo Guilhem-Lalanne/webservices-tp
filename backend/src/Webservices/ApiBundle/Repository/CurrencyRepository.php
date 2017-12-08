@@ -11,7 +11,7 @@ namespace Webservices\ApiBundle\Repository;
 class CurrencyRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getConvertedAmount($initialCurrencyCode, $targetCurrencyCode, $amount)
+    public function getConvertRate($initialCurrencyCode, $targetCurrencyCode)
     {
         // Get selected items :
         $initialCurrency = $this->findOneBy(array('isoCode' => $initialCurrencyCode));
@@ -21,6 +21,15 @@ class CurrencyRepository extends \Doctrine\ORM\EntityRepository
         $rate = 1 / $initialCurrency->rate * $targetCurrency->rate;
 
         // Return final amount :
+        return $rate;
+    }
+
+    public function getConvertedAmount($initialCurrencyCode, $targetCurrencyCode, $amount)
+    {
+        // Use previous function to get rate :
+        $rate = $this->getConvertRate($initialCurrencyCode, $targetCurrencyCode);
+
+        // Multiply by amount and return value :
         return $rate * $amount;
     }
 }
