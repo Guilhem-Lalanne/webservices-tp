@@ -18,7 +18,7 @@ class CurrencyRepository extends \Doctrine\ORM\EntityRepository
         $targetCurrency = $this->findOneBy(array('isoCode' => $targetCurrencyCode));
 
         // Get rate :
-        $rate = 1 / $initialCurrency->rate * $targetCurrency->rate;
+        $rate = 1 / $initialCurrency->getRate() * $targetCurrency->getRate();
 
         // Return final amount :
         return $rate;
