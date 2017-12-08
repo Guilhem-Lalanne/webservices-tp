@@ -1,3 +1,4 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+webservices_api:
+    resource: "@WebservicesApiBundle/Resources/config/routing.yml"
+    prefix:   /
+

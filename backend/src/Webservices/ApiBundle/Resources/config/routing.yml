@@ -1,0 +1,3 @@
+webservices_api_homepage:
+    path:     /
+    defaults: { _controller: WebservicesApiBundle:Default:index }
