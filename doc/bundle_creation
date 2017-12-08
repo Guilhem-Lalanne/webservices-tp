@@ -17,4 +17,16 @@ $ composer dump-autoload
 
 
 DB creation :
+
 $ php bin/console doctrine:database:create
+
+
+Entity creation :
+
+$ php bin/console doctrine:generate:entity
+With isoCode, name, country, and rate.
+
+TODO : create entity for configuration (base currency, date ...)
+
+$ php bin/console doctrine:schema:update --dump-sql
+$ php bin/console doctrine:schema:update --force
