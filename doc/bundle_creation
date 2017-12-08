@@ -15,3 +15,6 @@ It did not work properly, I had to fix composer.json, and add manually the bundl
 And then, reload autoload :
 $ composer dump-autoload
 
+
+DB creation :
+$ php bin/console doctrine:database:create
