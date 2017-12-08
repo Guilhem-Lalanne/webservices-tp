@@ -10,7 +10,7 @@ Objectives :
 Everything I did to setup the server is described in the doc/setup file.
 That is : 
 - Configuration of Apache 2.4 VirtualHost
-- Installation of Symfony
+- Installation of Symfony, a famous PHP framework.
 
 ## 2. Commands passed during the project
 
@@ -53,4 +53,6 @@ It is the one allowing us to pass variables from the address, as GET.
 
 #### Frontend
 
-The frontend simply processes input of user into an address. This address is then sent to the backend, and the response displayed.
+The frontend simply processes input of user into an address. This address is then sent to the backend, and the response displayed using curl.
+
+**Note : you have to setup your server address in the controller file !**
