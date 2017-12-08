@@ -1,0 +1,17 @@
+/*
+ * Project setup
+ *
+ * @author : Guilhem Lalanne
+ *
+ */
+
+Bundle creation :
+
+$ php bin/console generate:bundle
+
+It did not work properly, I had to fix composer.json, and add manually the bundle.
+(see https://stackoverflow.com/questions/45242838/symfony-3-bundle-creation-always-throws-edit-the-composer-json-file)
+
+And then, reload autoload :
+$ composer dump-autoload
+
