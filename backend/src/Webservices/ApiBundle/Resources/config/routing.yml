@@ -1,3 +1,14 @@
 webservices_api_homepage:
     path:     /
     defaults: { _controller: WebservicesApiBundle:Default:index }
+
+webservices_api_conversion:
+    path:      /{initialCurrencyCode}/{targetCurrencyCode}/{amount}
+    defaults:
+         _controller: WebservicesApiBundle:Default:convert
+         amount: 1
+    methods: [GET]
+#    requirements:
+#         initialCurrencyCode:
+#         targetCurrencyCode:
+#         amount:
