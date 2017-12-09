@@ -2,6 +2,8 @@
 
 namespace Webservices\ApiBundle\Repository;
 
+use JMS\Serializer\SerializerInterface;
+
 /**
  * CurrencyRepository
  *
@@ -31,5 +33,10 @@ class CurrencyRepository extends \Doctrine\ORM\EntityRepository
 
         // Multiply by amount and return value :
         return $rate * $amount;
+    }
+
+    public function getCurrencyList() {
+        $list = $this->findAll();
+       return $list;
     }
 }
