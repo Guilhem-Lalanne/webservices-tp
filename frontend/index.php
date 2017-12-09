@@ -8,6 +8,9 @@
 
 $target = "http://webservices-tp.localhost/web/app_dev.php";
 
+$currencies = file_get_contents($target);
+$currencies = json_decode($currencies, true);
+
 if (isset($_POST) and !empty($_POST)) {
     $initialCurrencyCode = $_POST['initialCurrencyCode'];
     $targetCurrencyCode = $_POST['targetCurrencyCode'];
@@ -16,5 +19,7 @@ if (isset($_POST) and !empty($_POST)) {
 
     $value = file_get_contents($target);
 
-    print_r($value);
+    echo ("Change = $value <hr>");
 }
+
+require_once('view.php');
