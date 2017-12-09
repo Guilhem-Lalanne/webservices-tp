@@ -41,3 +41,15 @@ Note : I had to change version to 2.* in composer.json and then run composer upd
 
 Load data :
 $ php bin/console doctrine:fixtures:load
+
+
+JSON serializer (JMS-Serializer) :
+
+We need a bundle to handle the conversion from returned list of objects from the database, to json.
+The json should be returned as response.
+This is possible with JSM-Serializer. To install it, type :
+$ composer require jms/serializer-bundle
+
+Then, verify that composer contains a line with '"jms/serializer-bundle": "^2.3"', or add it.
+Verify that AppKernel.php contains the bundle 'new JMS\SerializerBundle\JMSSerializerBundle(),'.
+Uncomment the 'serializer' line in config.yml.
