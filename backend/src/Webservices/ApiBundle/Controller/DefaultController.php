@@ -12,7 +12,20 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('WebservicesApiBundle:Default:index.html.twig');
+        $em = $this->getDoctrine();
+
+        $list = $em
+            ->getRepository(Currency::class)
+            ->getCurrencyList();
+
+        $serializer = $this->container->get('jms_serializer');
+        $jsonContent = $serializer->serialize($list, 'json');
+
+        $response = new JsonResponse();
+        $response->setJson($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
     public function convertAction($initialCurrencyCode, $targetCurrencyCode, $amount)
@@ -23,11 +36,6 @@ class DefaultController extends Controller
         $convertedAmount = $em
             ->getRepository(Currency::class)
             ->getConvertedAmount($initialCurrencyCode, $targetCurrencyCode, $amount);
-
-//        // Test json :
-//        $response = new JsonResponse();
-//        $response->setData(json_encode($convertedAmount));
-//        $response->headers->set('Content-Type', 'application/json');
 
         $response = new Response(
             $convertedAmount,
